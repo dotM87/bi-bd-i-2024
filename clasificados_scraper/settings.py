@@ -100,7 +100,7 @@ FEED_EXPORT_ENCODING = "utf-8"
 
 # Configuración del pipeline para guardar datos en MongoDB
 ITEM_PIPELINES = {
-   'clasificados_scraper.pipelines.MongoDBPipeline': 300,
+   'clasificados_scraper.pipelines.MongoDBPipeline', 100
 }
 
 # Configuración de MongoDB Atlas
