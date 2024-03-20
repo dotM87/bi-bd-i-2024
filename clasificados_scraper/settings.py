@@ -68,9 +68,7 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "clasificados_scraper.pipelines.ClasificadosScraperPipeline": 300,
-#}
+ITEM_PIPELINES ={"clasificados_scraper.pipelines.MongoDBPipeline": 300,}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -97,11 +95,6 @@ ROBOTSTXT_OBEY = True
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
-
-# Configuración del pipeline para guardar datos en MongoDB
-ITEM_PIPELINES = {
-   'clasificados_scraper.pipelines.MongoDBPipeline', 100
-}
 
 # Configuración de MongoDB Atlas
 MONGO_URI = x
