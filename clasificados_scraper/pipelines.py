@@ -15,9 +15,14 @@ class MongoDBPipeline:
 
     def process_item(self, item, spider):
         if isinstance(item, ClasificadosItem):
-            # Guardar el item en la colección 'inmuebles'
+            # Obtener el siguiente índice disponible para el nuevo documento
             db = self.client['clasificados-los-tiempos']
+            index = db[self.collection_name].count_documents({}) + 1
+            item['id'] = index
+
+            # Guardar el item en la colección 'inmuebles'
             db[self.collection_name].insert_one(dict(item))
             return item
         else:
             raise DropItem("Item no válido: %s" % item)
+
