@@ -4,6 +4,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 x = os.getenv('MONGODB_URI')
+
+# Configuración de MongoDB Atlas
+MONGO_URI = x
+MONGO_DATABASE = "clasificados-los-tiempos"
+
+
 # Scrapy settings for clasificados_scraper project
 #
 # For simplicity, this file contains only settings considered important or
@@ -68,7 +74,7 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES ={"clasificados_scraper.pipelines.MongoDBPipeline": 300}
+ITEM_PIPELINES ={"clasificados_scraper.pipelines.MongoDBPipeline": 300,}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -95,10 +101,6 @@ ITEM_PIPELINES ={"clasificados_scraper.pipelines.MongoDBPipeline": 300}
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
-
-# Configuración de MongoDB Atlas
-MONGO_URI = x
-MONGO_DATABASE = "clasificados-los-tiempos"
 
 # Configuración opcional para el log
 LOG_LEVEL = 'INFO'  # Puedes ajustar el nivel de log según tu preferencia
