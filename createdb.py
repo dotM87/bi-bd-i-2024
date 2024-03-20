@@ -1,7 +1,10 @@
+import os
+from dotenv import load_dotenv
 from pymongo import MongoClient
 
+load_dotenv()
 # Conexión a MongoDB Atlas
-uri = "mongodb+srv://mbenjaminzr:51fS6hMejs8fInPx@m87-bi-bd.crrwcre.mongodb.net/?retryWrites=true&w=majority&appName=m87-bi-bd"
+uri = os.getenv('MONGODB_URI')
 client = MongoClient(uri)
 
 # Crear la base de datos 'clasificados-los-tiempos' si no existe
