@@ -9,6 +9,8 @@ x = os.getenv('MONGODB_URI')
 MONGO_URI = x
 MONGO_DATABASE = "clasificados-los-tiempos"
 
+print (MONGO_URI)
+
 
 # Scrapy settings for clasificados_scraper project
 #
