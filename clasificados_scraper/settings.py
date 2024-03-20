@@ -1,3 +1,9 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+x = os.getenv('MONGODB_URI')
 # Scrapy settings for clasificados_scraper project
 #
 # For simplicity, this file contains only settings considered important or
@@ -91,3 +97,15 @@ ROBOTSTXT_OBEY = True
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
+
+# Configuración del pipeline para guardar datos en MongoDB
+ITEM_PIPELINES = {
+   'clasificados_scraper.pipelines.MongoDBPipeline': 300,
+}
+
+# Configuración de MongoDB Atlas
+MONGO_URI = x
+MONGO_DATABASE = "clasificados-los-tiempos"
+
+# Configuración opcional para el log
+LOG_LEVEL = 'INFO'  # Puedes ajustar el nivel de log según tu preferencia
