@@ -31,4 +31,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run Python script
       run: |
-        scrapy crawler clasificados_spider
+        scrapy crawl clasificados_spider
