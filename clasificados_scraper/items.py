@@ -5,3 +5,4 @@ class ClasificadosItem(scrapy.Item):
     date = scrapy.Field()
     description = scrapy.Field()
     location = scrapy.Field()
+    request_date = scrapy.Field()
