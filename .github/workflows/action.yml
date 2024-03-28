@@ -29,4 +29,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run Python script
       run: |
-        scrapy crawl clasificados_spider
+        scrapy crawl -s MONGODB_URI="mongodb+srv://m87:<ASF69AXiIdp7Llgf>@m87-bi-bd.1b9ahcp.mongodb.net/" -s MONGODB_DATABASE="los-tiempos" clasificados_spider
