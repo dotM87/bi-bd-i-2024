@@ -1,26 +1,25 @@
 import sys
-from pymongo import MongoClient
-from scrapy.exceptions import DropItem
+import pymongo
 from .items import ClasificadosItem
 
 class MongoDBPipeline:
     collection_name = 'inmuebles'
 
-    def __init__(self, mongo_uri, mongo_db):
-        self.mongo_uri = mongo_uri
-        self.mongo_db = mongo_db
-        if not self.mongo_uri: sys.exit("No se ha especificado la URI de MongoDB")
+    def __init__(self, mongodb_uri, mongodb_db):
+        self.mongodb_uri = mongodb_uri
+        self.mongodb_db = mongodb_db
+        if not self.mongodb_uri: sys.exit("No se ha especificado la URI de MongoDB")
 
     @classmethod
     def from_crawler(cls, crawler):
         return cls(
-            mongo_uri=crawler.settings.get('MONGODB_URI'),
-            mongo_db=crawler.settings.get('MONGODB_DATABASE', 'items')
+            mongodb_uri=crawler.settings.get('MONGODB_URI'),
+            mongodb_db=crawler.settings.get('MONGODB_DATABASE', 'items')
         )
 
     def open_spider(self, spider):
-        self.client = MongoClient(self.mongo_uri)
-        self.db = self.client[self.mongo_db]
+        self.client = pymongo.MongoClient(self.mongodb_uri)
+        self.db = self.client[self.mongodb_db]
 
     def close_spider(self, spider):
         self.client.close()
