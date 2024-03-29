@@ -18,8 +18,8 @@ class ClasificadosSpider(scrapy.Spider):
             item['date'] = ad.css('div.publish-date span.field-content::text').get()
             item['description'] = ad.css('div.body span.field-content::text').get()
             item['location'] = ad.css('div.description span.field-content::text').get()
-            yield item
             item ['request_date'] = current_date
+            yield item
 
         # Seguir a la siguiente página si existe
         next_page = response.css('li.pager-next a::attr(href)').get()
