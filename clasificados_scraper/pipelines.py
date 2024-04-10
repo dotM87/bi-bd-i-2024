@@ -28,3 +28,4 @@ class MongoDBPipeline:
         data = dict(ClasificadosItem(item))
         self.db[self.collection_name].insert_one(data)
         return item
+# se encarga de la conexión con la base de datos
